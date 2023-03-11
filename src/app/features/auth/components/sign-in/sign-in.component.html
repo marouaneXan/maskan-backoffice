@@ -1,13 +1,13 @@
 <div class="mx-auto px-4 h-full">
   <div class="flex content-center items-center justify-center h-screen">
-    <div class="w-full lg:w-4/12 px-4 ">
+    <div class="w-full lg:w-4/12 px-4">
+      <div class="text-blue-400 text-center mb-3 font-bold flex justify-center items-center space-x-2">
+        <mat-icon>https</mat-icon>
+        <small class="mt-1">Sign in with credentials</small>
+      </div>
       <div
-        class="relative flex flex-col min-w-0 break-words w-full mb-6 py-10 shadow-lg rounded-lg bg-blueGray-200 border-0">
+        class="relative bg-gray-100 flex flex-col min-w-0 break-words w-full mb-6 py-10 shadow-lg rounded-lg bg-blueGray-200 border-0">
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <div class="text-blue-400 text-center mb-3 font-bold flex justify-center items-center space-x-2">
-            <mat-icon>https</mat-icon>
-            <small class="mt-1">Sign in with credentials</small>
-          </div>
           <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm)">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
@@ -45,7 +45,7 @@
           </a>
         </div>
         <div class="w-1/2 text-right">
-          <a class="text-blueGray-200">
+          <a routerLink="/auth/sign-up" class="text-blueGray-200">
             <small>Create new account</small>
           </a>
         </div>

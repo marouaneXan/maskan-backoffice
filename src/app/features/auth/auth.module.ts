@@ -6,12 +6,14 @@ import {ReactiveFormsModule} from '@angular/forms'
 
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SpinnerModule } from '../spinner/spinner.module';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 
 @NgModule({
   declarations: [
-    SignInComponent
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
