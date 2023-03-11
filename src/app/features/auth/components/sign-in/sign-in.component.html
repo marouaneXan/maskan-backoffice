@@ -15,16 +15,7 @@
               </label>
               <input type="email"
                 class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Email" formControlName="email" [ngClass]="{
-                  'border-2 border-rose-500':(signInForm.get('email')!.invalid && (signInForm.get('email')!.dirty || signInForm.get('email')!.touched)),
-                  '': signInForm.get('email')!.valid && (signInForm.get('email')!.dirty || signInForm.get('email')!.touched)
-              }">
-              <span [ngClass]="{
-                'text-red-600 text-[12px]':signInForm.get('email')!.errors?.['required'] || signInForm.get('email')!.errors?.['email']
-              }">
-                {{signInForm.get('email')!.errors?.['required'] ? 'Email is required.':''}}
-                {{signInForm.get('email')!.errors?.['email']?'Invalid email address.':''}}
-              </span>
+                placeholder="Email" formControlName="email">
             </div>
 
             <div class="relative w-full mb-3">
@@ -34,18 +25,14 @@
               <input type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password" formControlName="password">
-                <span [ngClass]="{
-                  'text-red-600 text-[12px]':signInForm.get('password')!.errors?.['required'] || signInForm.get('password')!.errors?.['password']
-                }">
-                  {{signInForm.get('password')!.errors?.['required'] ? 'Password is required.':''}}
-                </span>
             </div>
 
             <div class="text-center mt-6">
               <button
                 class="bg-blue-600 text-white active:bg-blue-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                type="submit">
-                Sign In
+                type="submit" [disabled]="isLoading">
+                <app-spinner *ngIf="isLoading" [props]="{width:'22px',height:'22px'}"></app-spinner>
+                {{!isLoading ? 'SignIn':''}}
               </button>
             </div>
           </form>

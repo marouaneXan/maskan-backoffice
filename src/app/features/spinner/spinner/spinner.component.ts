@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { Spinner } from '../interface/spinner';
 
 @Component({
   selector: 'app-spinner',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent {
+  @Input() props:Spinner={
+    height:'',
+    width:''
+  }
 
 }
