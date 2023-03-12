@@ -8,11 +8,13 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { SidebarComponent } from './views/partials/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
