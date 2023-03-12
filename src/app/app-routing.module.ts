@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core'
 import { RouterModule,Routes } from '@angular/router'
+import { NotFoundComponent } from './views/not-found/not-found.component'
 
 const routes:Routes=[
     {
@@ -7,6 +8,10 @@ const routes:Routes=[
         children:[
             {path:'',loadChildren:()=>import('./features/auth/auth.module').then(m=>m.AuthModule)}
         ]
+    },
+    {
+        path:'**',
+        component:NotFoundComponent
     }
 ]
 @NgModule({
