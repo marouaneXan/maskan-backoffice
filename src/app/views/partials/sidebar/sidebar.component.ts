@@ -7,7 +7,26 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
   collapseShow = "hidden";
-  toggleCollapseShow(classes:string) {
+  sidebarLinks = [
+    {
+      path: '/admin/dashboard',
+      name: 'Dashboard'
+    },
+    {
+      path: '/admin/dashboard/clients',
+      name: 'Clients'
+    },
+    {
+      path: '/admin/dashboard/properties',
+      name: 'Properties'
+    }
+  ]
+  activeLinkIndex: number = 0;
+
+  setActiveLink(index: number) {
+    this.activeLinkIndex = index;
+  }
+  toggleCollapseShow(classes: string) {
     this.collapseShow = classes;
   }
 }
