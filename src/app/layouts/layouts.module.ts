@@ -20,7 +20,7 @@ import { HeaderComponent } from '../views/partials/header/header.component';
   ],
   imports: [
     CommonModule,
-    LayoutsRoutingModule
+    LayoutsRoutingModule,
   ]
 })
 export class LayoutsModule { }
