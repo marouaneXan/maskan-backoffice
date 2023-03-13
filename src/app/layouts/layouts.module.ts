@@ -5,6 +5,8 @@ import { LayoutsRoutingModule } from './layouts-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from '../views/partials/sidebar/sidebar.component';
 import { DashboardComponent } from '../views/dashboard/dashboard/dashboard.component';
+import { NavbarComponent } from '../views/partials/navbar/navbar.component';
+import { HeaderComponent } from '../views/partials/header/header.component';
 
 
 
@@ -12,7 +14,9 @@ import { DashboardComponent } from '../views/dashboard/dashboard/dashboard.compo
   declarations: [
     LayoutComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
