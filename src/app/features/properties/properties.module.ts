@@ -15,7 +15,8 @@ import { AddPropertyComponent } from './components/add-property/add-property.com
     CommonModule
   ],
   exports: [
-    ListPropertiesComponent
+    ListPropertiesComponent,
+    AddPropertyComponent
   ],
 })
 export class PropertiesModule { }

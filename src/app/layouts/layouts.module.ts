@@ -6,7 +6,6 @@ import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from '../views/partials/sidebar/sidebar.component';
 import { DashboardComponent } from '../views/dashboard/dashboard/dashboard.component';
 import { NavbarComponent } from '../views/partials/navbar/navbar.component';
-import { HeaderComponent } from '../views/partials/header/header.component';
 import { PropertiesViewsModule } from '../views/properties-views/properties-views.module';
 
 
@@ -16,7 +15,6 @@ import { PropertiesViewsModule } from '../views/properties-views/properties-view
     SidebarComponent,
     DashboardComponent,
     NavbarComponent,
-    HeaderComponent,
   ],
   imports: [
     CommonModule,

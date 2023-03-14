@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent {
-
+  hello(){
+    console.log('hello')
+  }
 }
