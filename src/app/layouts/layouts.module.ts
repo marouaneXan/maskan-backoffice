@@ -7,7 +7,7 @@ import { SidebarComponent } from '../views/partials/sidebar/sidebar.component';
 import { DashboardComponent } from '../views/dashboard/dashboard/dashboard.component';
 import { NavbarComponent } from '../views/partials/navbar/navbar.component';
 import { HeaderComponent } from '../views/partials/header/header.component';
-
+import { PropertiesViewsModule } from '../views/properties-views/properties-views.module';
 
 
 @NgModule({
@@ -21,6 +21,8 @@ import { HeaderComponent } from '../views/partials/header/header.component';
   imports: [
     CommonModule,
     LayoutsRoutingModule,
-  ]
+    PropertiesViewsModule
+  ],
+  
 })
 export class LayoutsModule { }
