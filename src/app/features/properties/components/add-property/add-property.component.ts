@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-property',
@@ -9,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AddPropertyComponent {
   status: boolean = false
   step: number = 0
+  constructor(private toastr: ToastrService) { }
   toggleModalAddProperty() {
     this.status = !this.status
   }
@@ -35,16 +37,13 @@ export class AddPropertyComponent {
       !this.newProperty.value.price ||
       !this.newProperty.value.size ||
       !this.newProperty.value.desc
-    ) {
-      alert('Please add all fields')
-      this.step=0
-    }
+    )this.toastr.error('Please add all fields')
     else this.step++
+
   }
   previous() {
     this.step--
   }
-  addNewProperty(){
-    console.log(this.newProperty.value);
+  addNewProperty() {
   }
 }
