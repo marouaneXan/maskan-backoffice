@@ -32,7 +32,7 @@ export class TokenService {
     if(token){
       const payload=this.payload(token)
       if(payload){
-        return admin_id===payload.admin_id
+        return admin_id===payload.id
       }
     }
     return false

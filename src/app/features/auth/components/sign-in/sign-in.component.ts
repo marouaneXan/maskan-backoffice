@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
@@ -17,7 +18,7 @@ export class SignInComponent {
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(20)])
   })
-  constructor(private authService: AuthService, private tokenServie: TokenService, private toastr: ToastrService, private loadinService: LoadingService) { }
+  constructor(private authService: AuthService, private tokenServie: TokenService, private toastr: ToastrService, private loadinService: LoadingService,private router :Router) { }
   signIn(data: FormGroup) {
     if (!this.signInForm.value.email || !this.signInForm.value.password) this.toastr.error('Please add all fields')
     else {
@@ -30,6 +31,9 @@ export class SignInComponent {
           this.tokenServie.setDataToLocalStorage(res)
           this.authService.changeStatus(true)
           this.toastr.success(res.message)
+          setTimeout(()=>{
+            this.router.navigateByUrl('/admin/dashboard')
+          },1000)
         },
         err => {
           this.isLoading = false
