@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent {
-  hello(){
-    console.log('hello')
+  status:boolean=false
+  toggleModalAddProperty(){
+    this.status=!this.status
   }
 }
