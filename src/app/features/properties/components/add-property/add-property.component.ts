@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PropertiesService } from '../../services/properties.service';
+import { Property } from '../../interface/property';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-add-property',
@@ -10,7 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AddPropertyComponent {
   status: boolean = false
   step: number = 0
-  constructor(private toastr: ToastrService) { }
+  isLoading = false
+  constructor(private toastr: ToastrService, private propertyService: PropertiesService, private loadinService: LoadingService) { }
   toggleModalAddProperty() {
     this.status = !this.status
   }
@@ -37,13 +41,26 @@ export class AddPropertyComponent {
       !this.newProperty.value.price ||
       !this.newProperty.value.size ||
       !this.newProperty.value.desc
-    )this.toastr.error('Please add all fields')
+    ) this.toastr.error('Please add all fields')
     else this.step++
 
   }
   previous() {
     this.step--
   }
-  addNewProperty() {
+  addNewProperty(newProperty: FormGroup) {
+    this.isLoading = true
+    this.loadinService.show()
+    this.propertyService.addProperty(newProperty.value).subscribe(
+      (res: any) => {
+        this.loadinService.hide()
+        this.toastr.success(res.data.message)
+        this.newProperty.reset()
+        this.status = false
+      },
+      err => {
+        this.toastr.error(err.error.message)
+      }
+    )
   }
 }

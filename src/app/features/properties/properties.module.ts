@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListPropertiesComponent } from './components/list-properties/list-properties.component';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     ListPropertiesComponent,
