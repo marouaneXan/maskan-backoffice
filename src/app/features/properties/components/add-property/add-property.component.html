@@ -62,110 +62,128 @@
                         </svg>
                     </button>
                 </div>
-                <form class="px-6 py-2 space-y-6">
-                    <div>
-                        <div class="grid grid-cols-6 gap-6">
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    title
-                                </label>
-                                <input type="text" placeholder="title"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    adress
-                                </label>
-                                <input type="text" placeholder="adress"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label htmlFor="companies" class="block mb-2 text-sm font-medium text-gray-900">
-                                    Select an option
-                                </label>
-                                <select name="company" id="companies"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected disabled>
-                                        Choose a city
-                                    </option>
-                                    <option>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    bedrooms
-                                </label>
-                                <input type="number" placeholder="bedrooms"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    stages
-                                </label>
-                                <input type="number" placeholder="stages"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    price
-                                </label>
-                                <input type="number" placeholder="price"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">
-                                    size
-                                </label>
-                                <input type="number" placeholder="size"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label htmlFor="companies" class="block mb-2 text-sm font-medium text-gray-900">
-                                    Select an option
-                                </label>
-                                <select name="company" id="companies"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected disabled>
-                                        Choose a company
-                                    </option>
-                                    <option key={company._id} value={company._id}>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label htmlFor="car" class="block mb-2 text-sm font-medium text-gray-900">
-                                    Select an option
-                                </label>
-                                <select onChange={formik.handleChange} name="car" id="car"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected disabled>
-                                        Choose a car
-                                    </option>
-                                    <option key={bus._id} value={bus._id}>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <!-- <TextField
-                  label="Price"
-                  name="price"
-                  type="number"
-                /> -->
-                            </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <!-- <TextField
-                  label="Distance"
-                  name="distance" 
-                  type="number"
-                /> -->
-                            </div>
+                <form class="px-6 py-2 space-y-2" [formGroup]="newProperty">
+                    <h3 class="text-[18px] font-medium text-center">Characteristic</h3>
+                    <div class="grid grid-cols-6 gap-6">
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                title
+                            </label>
+                            <input formControlName="title" type="text" placeholder="title"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                adress
+                            </label>
+                            <input formControlName="adress" type="text" placeholder="adress"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label htmlFor="companies" class="block mb-2 text-sm font-medium text-gray-900">
+                                city
+                            </label>
+                            <select formControlName="city"  id="companies"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>
+                                    Choose a city
+                                </option>
+                                <option>
+                                    feklz
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                bedrooms
+                            </label>
+                            <input type="number" placeholder="bedrooms"
+                            formControlName="bedrooms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                stages
+                            </label>
+                            <input formControlName="stage" type="number" placeholder="stages"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                price
+                            </label>
+                            <input formControlName="price" type="number" placeholder="price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">
+                                size
+                            </label>
+                            <input formControlName="size" type="number" placeholder="size"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        </div>
+                        <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
+                            <label for="message"
+                                class="block mb-2 text-sm font-medium text-gray-900">Description</label>
+                            <textarea formControlName="desc" id="message" rows="4"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Write your thoughts here..."></textarea>
+                        </div>
+                        <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
+                            <label htmlFor="companies" class="block mb-2 text-sm font-medium text-gray-900">
+                                category
+                            </label>
+                            <select formControlName="category" id="companies"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>
+                                    Choose a category
+                                </option>
+                                <option>
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
+                            <label htmlFor="car" class="block mb-2 text-sm font-medium text-gray-900">
+                                type
+                            </label>
+                            <select formControlName="type" id="car"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>
+                                    Choose a type
+                                </option>
+                                <option>
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
+                            <label htmlFor="car" class="block mb-2 text-sm font-medium text-gray-900">
+                                characteristic
+                            </label>
+                            <select formControlName="characteristic" id="car"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>
+                                    Choose a characteristic
+                                </option>
+                                <option>
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </form>
                 <div class="p-6 rounded-b border-t border-gray-200">
-                    <button
-                        class="bg-red-500 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    <button *ngIf="step===0"
+                    (click)="next()"
+                        class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        type="button">
+                        next
+                    </button>
+                    <button *ngIf="step===1"
+                    (click)="previous()"
+                        class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        type="button">
+                        back
+                    </button>
+                    <button *ngIf="step===1" (click)="addNewProperty()"
+                        class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button">
                         add new
                     </button>
