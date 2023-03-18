@@ -10,6 +10,9 @@ import { CategoriesSelectComponent } from './categories-select/categories-select
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    CategoriesSelectComponent
   ]
 })
 export class CategoriesSelectModule { }

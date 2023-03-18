@@ -4,6 +4,7 @@ import { ListPropertiesComponent } from './components/list-properties/list-prope
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriesSelectModule } from 'src/app/shared/categories-select/categories-select.module';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CategoriesSelectModule
   ],
   exports: [
     ListPropertiesComponent,

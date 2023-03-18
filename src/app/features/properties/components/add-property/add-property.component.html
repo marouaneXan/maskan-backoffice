@@ -129,17 +129,7 @@
                                 placeholder="Write your thoughts here..."></textarea>
                         </div>
                         <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
-                            <label htmlFor="companies" class="block mb-2 text-sm font-medium text-gray-900">
-                                category
-                            </label>
-                            <select formControlName="category" id="companies"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected disabled>
-                                    Choose a category
-                                </option>
-                                <option>
-                                </option>
-                            </select>
+                            <app-categories-select></app-categories-select>
                         </div>
                         <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
                             <label htmlFor="car" class="block mb-2 text-sm font-medium text-gray-900">
