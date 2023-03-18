@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriesSelectModule } from 'src/app/shared/categories-select/categories-select.module';
 import { TypePropertySelectModule } from 'src/app/shared/type-property-select/type-property-select.module';
+import { CharacteristicSelectModule } from 'src/app/shared/characteristic-select/characteristic-select.module';
 
 
 
@@ -21,7 +22,8 @@ import { TypePropertySelectModule } from 'src/app/shared/type-property-select/ty
     ReactiveFormsModule,
     HttpClientModule,
     CategoriesSelectModule,
-    TypePropertySelectModule
+    TypePropertySelectModule,
+    CharacteristicSelectModule
   ],
   exports: [
     ListPropertiesComponent,

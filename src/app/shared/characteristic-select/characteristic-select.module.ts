@@ -10,6 +10,9 @@ import { CharacteristicSelectComponent } from './characteristic-select/character
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    CharacteristicSelectComponent
   ]
 })
 export class CharacteristicSelectModule { }
