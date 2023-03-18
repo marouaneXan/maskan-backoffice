@@ -10,6 +10,9 @@ import { TypePropertySelectComponent } from './type-property-select/type-propert
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    TypePropertySelectComponent
   ]
 })
 export class TypePropertySelectModule { }
