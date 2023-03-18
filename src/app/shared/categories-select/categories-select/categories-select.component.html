@@ -6,6 +6,14 @@
     <option selected disabled>
         Choose a category
     </option>
-    <option>
-    </option>
+    <ng-container *ngIf="isLoading; else categoriesList">
+        <option disabled>
+            <app-spinner [props]="{width:'18px',height:'18px'}"></app-spinner>
+        </option>
+    </ng-container>
+    <ng-template #categoriesList>
+        <option *ngFor="let category of categories" [value]="category._id">
+            {{category.category}}
+        </option>
+    </ng-template>
 </select>
