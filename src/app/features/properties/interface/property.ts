@@ -1,6 +1,6 @@
 export interface Category {
     _id: string,
-    type: string
+    category: string
 }
 export interface Type {
     _id: string,
