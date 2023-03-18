@@ -1,11 +1,19 @@
-<label for="characteristic" class="block mb-2 text-sm font-medium text-gray-900">
-    characteristic
+<label for="types" class="block mb-2 text-sm font-medium text-gray-900">
+    Characteristics
 </label>
-<select formControlName="characteristic" id="characteristic"
+<select formControlName="category" id="types"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
     <option selected disabled>
         Choose a characteristic
     </option>
-    <option>
-    </option>
+    <ng-container *ngIf="isLoading; else characteristicsList">
+        <option disabled>
+            <app-spinner [props]="{width:'18px',height:'18px'}"></app-spinner>
+        </option>
+    </ng-container>
+    <ng-template #characteristicsList>
+        <option *ngFor="let characteristic of characteristics" [value]="characteristic._id">
+            {{characteristic.name}}
+        </option>
+    </ng-template>
 </select>
