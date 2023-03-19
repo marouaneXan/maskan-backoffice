@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
-import { Property } from '../../interface/property';
 import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
@@ -28,8 +27,8 @@ export class AddPropertyComponent {
     size: new FormControl(null, [Validators.required]),
     desc: new FormControl(null, [Validators.required]),
     category: new FormControl(null, Validators.required),
-    type: new FormControl(null, Validators.required),
-    characteristic: new FormControl(null, Validators.required),
+    // type: new FormControl(null, Validators.required),
+    // characteristic: new FormControl(null, Validators.required),
   })
   next() {
     if (

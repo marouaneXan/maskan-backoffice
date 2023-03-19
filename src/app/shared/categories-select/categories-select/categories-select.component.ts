@@ -1,4 +1,5 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { CategoryService } from 'src/app/features/categories/services/category.service';
 import { Category } from 'src/app/features/properties/interface/property';
@@ -9,6 +10,7 @@ import { Category } from 'src/app/features/properties/interface/property';
   styleUrls: ['./categories-select.component.css']
 })
 export class CategoriesSelectComponent implements OnInit {
+  @Input() newProperty: FormGroup = new FormGroup({});
   categories: Category[] = []
   isLoading = false
   constructor(private categoryService: CategoryService, private loadingService: LoadingService) { }
@@ -20,7 +22,7 @@ export class CategoriesSelectComponent implements OnInit {
     this.loadingService.show()
     this.categoryService.getCategories().subscribe(
       res => {
-        this.categories=res as Category[]
+        this.categories = res as Category[]
         this.isLoading = false
         this.loadingService.hide()
       },
