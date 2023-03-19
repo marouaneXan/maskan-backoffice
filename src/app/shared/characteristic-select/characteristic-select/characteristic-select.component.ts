@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { CharacteristicService } from 'src/app/features/characteristic/services/characteristic.service';
 import { Characteristic } from 'src/app/features/properties/interface/property';
@@ -8,10 +9,11 @@ import { Characteristic } from 'src/app/features/properties/interface/property';
   templateUrl: './characteristic-select.component.html',
   styleUrls: ['./characteristic-select.component.css']
 })
-export class CharacteristicSelectComponent {
+export class CharacteristicSelectComponent implements OnInit {
+  @Input() newProperty: FormGroup = new FormGroup({});
   characteristics: Characteristic[] = []
   isLoading = false
-  constructor(private characteristicService:CharacteristicService, private loadingService: LoadingService) { }
+  constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllCategories()
   }

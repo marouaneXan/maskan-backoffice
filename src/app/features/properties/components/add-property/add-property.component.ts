@@ -27,8 +27,8 @@ export class AddPropertyComponent {
     size: new FormControl(null, [Validators.required]),
     desc: new FormControl(null, [Validators.required]),
     category: new FormControl(null, Validators.required),
-    // type: new FormControl(null, Validators.required),
-    // characteristic: new FormControl(null, Validators.required),
+    type: new FormControl(null, Validators.required),
+    characteristic: new FormControl(null, Validators.required),
   })
   next() {
     if (

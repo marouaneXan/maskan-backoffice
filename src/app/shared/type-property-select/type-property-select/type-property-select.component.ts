@@ -1,6 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { LoadingService } from 'src/app/core/services/loading.service';
-import { CategoryService } from 'src/app/features/categories/services/category.service';
 import { Type } from 'src/app/features/properties/interface/property';
 import { TypeService } from 'src/app/features/type/services/type.service';
 
@@ -10,6 +10,7 @@ import { TypeService } from 'src/app/features/type/services/type.service';
   styleUrls: ['./type-property-select.component.css']
 })
 export class TypePropertySelectComponent implements OnInit {
+  @Input() newProperty: FormGroup = new FormGroup({});
   types: Type[] = []
   isLoading = false
   constructor(private typeService: TypeService, private loadingService: LoadingService) { }

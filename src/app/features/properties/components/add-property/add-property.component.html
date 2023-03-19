@@ -132,10 +132,10 @@
                             <app-categories-select [newProperty]="newProperty"></app-categories-select>
                         </div>
                         <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
-                            <app-type-property-select></app-type-property-select>
+                            <app-type-property-select [newProperty]="newProperty"></app-type-property-select>
                         </div>
                         <div *ngIf="step===1" class="col-span-6 sm:col-span-3">
-                            <app-characteristic-select></app-characteristic-select>
+                            <app-characteristic-select [newProperty]="newProperty"></app-characteristic-select>
                         </div>
                     </div>
                 </form>
