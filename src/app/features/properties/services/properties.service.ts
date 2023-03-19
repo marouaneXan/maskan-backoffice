@@ -9,8 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class PropertiesService {
 
-  constructor(private http:HttpClient) { }
-  addProperty(property:Property,category_id:string,type_id:string,characteristic_id:string):Observable<string>{
-    return this.http.post<string>(`${environment.baseApi}/properties/${category_id}/${type_id}/${characteristic_id}`,property)
+  constructor(private http: HttpClient) { }
+  addProperty(property: Property, category_id: string, type_id: string, characteristic_id: string): Observable<string> {
+    return this.http.post<string>(`${environment.baseApi}/properties/${category_id}/${type_id}/${characteristic_id}`, property)
+  }
+  getProperties(): Observable<Property[]> {
+    return this.http.get<Property[]>(`${environment.baseApi}/properties`)
   }
 }

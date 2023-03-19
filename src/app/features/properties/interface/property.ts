@@ -15,6 +15,7 @@ export interface Property {
     title: string,
     adress: string,
     bedrooms: string,
+    status:boolean,
     city: string,
     stage: string,
     price: string,

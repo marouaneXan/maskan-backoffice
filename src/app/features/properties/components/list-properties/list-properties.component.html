@@ -44,24 +44,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let property of properties">
           <th class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2 text-left flex items-center">
             <img src="assets/img/bootstrap.jpg" class="h-28 w-52 bg-white border" alt="..." />
           </th>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            sho9a
+            {{property.title}}
           </td>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            pending
+            {{property.status}}
           </td>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            efknlzeng
+            {{property.adress}}
           </td>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            123MAD
+            {{property.price}}
           </td>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            efkjbwkf...
+            {{property.desc}}
           </td>
           <td class="space-x-2 border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
             <i class="fa-solid fa-eye text-[14px] cursor-pointer"></i>
