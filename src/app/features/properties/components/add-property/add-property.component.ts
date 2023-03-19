@@ -50,10 +50,10 @@ export class AddPropertyComponent {
   addNewProperty(newProperty: FormGroup) {
     this.isLoading = true
     this.loadinService.show()
-    this.propertyService.addProperty(newProperty.value).subscribe(
+    this.propertyService.addProperty(newProperty.value,newProperty.value.category,newProperty.value.type,newProperty.value.characteristic).subscribe(
       (res: any) => {
+        this.toastr.success(res.message)
         this.loadinService.hide()
-        this.toastr.success(res.data.message)
         this.newProperty.reset()
         this.status = false
       },
