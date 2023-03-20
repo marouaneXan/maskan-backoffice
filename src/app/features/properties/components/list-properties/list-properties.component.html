@@ -52,8 +52,13 @@
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
             {{property.title}}
           </td>
-          <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            {{property.status}}
+          <td class="space-x-2 border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+            <div *ngIf="!property.status" class="flex items-center">
+              <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
+            </div>
+            <div *ngIf="property.status" class="flex items-center">
+              <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Live
+            </div>
           </td>
           <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
             {{property.adress}}
