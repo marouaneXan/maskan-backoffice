@@ -8,13 +8,16 @@ import { CategoriesSelectModule } from 'src/app/shared/categories-select/categor
 import { TypePropertySelectModule } from 'src/app/shared/type-property-select/type-property-select.module';
 import { CharacteristicSelectModule } from 'src/app/shared/characteristic-select/characteristic-select.module';
 import { SpinnerModule } from '../spinner/spinner.module';
+import { PropertyVisibilityComponent } from './components/property-visibility/property-visibility.component';
+
 
 
 
 @NgModule({
   declarations: [
     ListPropertiesComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    PropertyVisibilityComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
