@@ -9,6 +9,7 @@ import { TypePropertySelectModule } from 'src/app/shared/type-property-select/ty
 import { CharacteristicSelectModule } from 'src/app/shared/characteristic-select/characteristic-select.module';
 import { SpinnerModule } from '../spinner/spinner.module';
 import { PropertyVisibilityComponent } from './components/property-visibility/property-visibility.component';
+import { DeletePropertyComponent } from './components/delete-property/delete-property.component';
 
 
 
@@ -18,6 +19,7 @@ import { PropertyVisibilityComponent } from './components/property-visibility/pr
     ListPropertiesComponent,
     AddPropertyComponent,
     PropertyVisibilityComponent,
+    DeletePropertyComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
