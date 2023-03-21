@@ -12,9 +12,14 @@ export class ListPropertiesComponent {
   @Output() propertiesEvent = new EventEmitter()
   properties: Property[] = []
   isLoading = false
+  modalPropertyVisibility: boolean = false
+
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllProperties()
+  }
+  togglemodalPropertyVisibility():void {
+    this.modalPropertyVisibility = !this.modalPropertyVisibility
   }
   getAllProperties() {
     this.isLoading = true

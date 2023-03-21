@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-property-visibility',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./property-visibility.component.css']
 })
 export class PropertyVisibilityComponent {
-
+  @Input() modalPropertyVisibility:boolean=false
+  @Input() togglemodalPropertyVisibility=():void=>{}
 }

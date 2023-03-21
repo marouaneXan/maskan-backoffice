@@ -1,4 +1,5 @@
 <app-spinner *ngIf="isLoading" [props]="{width:'28px',height:'28px'}"></app-spinner>
+<app-property-visibility [modalPropertyVisibility]="modalPropertyVisibility" [togglemodalPropertyVisibility]="togglemodalPropertyVisibility"></app-property-visibility>
 <div *ngIf="!isLoading" class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-50">
   <div class="rounded-t py-3 border-0 mb-5">
     <div class="flex flex-wrap items-center">
@@ -70,7 +71,7 @@
             {{property.desc}}
           </td>
           <td class="space-x-2 border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
-            <i class="fa-solid fa-eye text-[14px] cursor-pointer"></i>
+            <i (click)="togglemodalPropertyVisibility()" class="fa-solid fa-eye text-[14px] cursor-pointer"></i>
             <i class="fa-solid fa-pen text-[14px] cursor-pointer"></i>
             <i class="fa-solid fa-trash text-[14px] cursor-pointer text-red-500"></i>
             <i class="fa-solid fa-angles-right text-[14px] cursor-pointer"></i>
