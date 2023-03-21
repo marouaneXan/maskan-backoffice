@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { Property } from '../../interface/property';
 import { PropertiesService } from '../../services/properties.service';
@@ -9,6 +9,7 @@ import { PropertiesService } from '../../services/properties.service';
   styleUrls: ['./list-properties.component.css']
 })
 export class ListPropertiesComponent {
+  @Output() propertiesEvent = new EventEmitter()
   properties: Property[] = []
   isLoading = false
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
@@ -23,6 +24,7 @@ export class ListPropertiesComponent {
         this.properties = res.properties as Property[]
         this.isLoading = false
         this.loadingService.hide()
+        this.propertiesEvent.emit(this.getAllProperties.bind(this))
       },
       err => {
         this.isLoading = false

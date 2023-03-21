@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
@@ -10,6 +10,7 @@ import { LoadingService } from 'src/app/core/services/loading.service';
   styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent {
+  @Output() propertyAdded = new EventEmitter()
   status: boolean = false
   step: number = 0
   isLoading = false
@@ -50,12 +51,13 @@ export class AddPropertyComponent {
   addNewProperty(newProperty: FormGroup) {
     this.isLoading = true
     this.loadinService.show()
-    this.propertyService.addProperty(newProperty.value,newProperty.value.category,newProperty.value.type,newProperty.value.characteristic).subscribe(
+    this.propertyService.addProperty(newProperty.value, newProperty.value.category, newProperty.value.type, newProperty.value.characteristic).subscribe(
       (res: any) => {
         this.toastr.success(res.message)
         this.loadinService.hide()
         this.newProperty.reset()
         this.status = false
+        this.propertyAdded.emit()
       },
       err => {
         this.toastr.error(err.error.message)
