@@ -13,6 +13,7 @@ export class ListPropertiesComponent {
   properties: Property[] = []
   isLoading = false
   modalPropertyVisibility: boolean = false
+  propertySelected:any
 
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
   ngOnInit(): void {

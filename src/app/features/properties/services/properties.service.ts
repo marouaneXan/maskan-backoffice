@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Property } from '../interface/property';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { catchError, throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,12 @@ export class PropertiesService {
   }
   getProperties(): Observable<Property[]> {
     return this.http.get<Property[]>(`${environment.baseApi}/properties`)
+  }
+  changePropertyVisibility(property_id: string): Observable<string> {
+    return this.http.patch<string>(`${environment.baseApi}/properties/${property_id}`, {}).pipe(
+      catchError((error: any) => {
+        return throwError('An error occurred while trying to update the property status');
+      })
+    );
   }
 }

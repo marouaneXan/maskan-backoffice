@@ -16,12 +16,12 @@
                     </button>
                 </div>
                 <div class="px-6 py-2 space-y-2 font-medium">
-                    Are you sure you want to make this property private!!!
+                    Are you sure you want to make this property {{ propertySelected.status ? 'unvisible': 'visible'}}
                 </div>
                 <div class="p-6 rounded-b border-t border-gray-200">
                     <button
                         class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                        type="button">
+                        type="button" (click)="chnagedVisibility(propertySelected._id)">
                         change visibility
                     </button>
                 </div>
