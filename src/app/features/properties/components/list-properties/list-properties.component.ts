@@ -14,6 +14,7 @@ export class ListPropertiesComponent {
   isLoading = false
   modalPropertyVisibility: boolean = false
   modalDeleteProperty: boolean = false
+  modalUpdateProperty: boolean = false
   propertySelected: any
 
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
@@ -25,6 +26,9 @@ export class ListPropertiesComponent {
   }
   togglemodalDeleteProperty(): void {
     this.modalDeleteProperty = !this.modalDeleteProperty
+  }
+  togglemodalUpdateProperty(): void {
+    this.modalUpdateProperty = !this.modalUpdateProperty
   }
   getAllProperties() {
     this.isLoading = true

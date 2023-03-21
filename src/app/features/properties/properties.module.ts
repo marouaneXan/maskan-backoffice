@@ -10,6 +10,7 @@ import { CharacteristicSelectModule } from 'src/app/shared/characteristic-select
 import { SpinnerModule } from '../spinner/spinner.module';
 import { PropertyVisibilityComponent } from './components/property-visibility/property-visibility.component';
 import { DeletePropertyComponent } from './components/delete-property/delete-property.component';
+import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 
 
 
@@ -20,6 +21,7 @@ import { DeletePropertyComponent } from './components/delete-property/delete-pro
     AddPropertyComponent,
     PropertyVisibilityComponent,
     DeletePropertyComponent,
+    UpdatePropertyComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

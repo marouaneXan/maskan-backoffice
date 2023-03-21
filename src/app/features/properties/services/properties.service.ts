@@ -30,4 +30,11 @@ export class PropertiesService {
       })
     );
   }
+  updateProperty(data: Property, property_id: string): Observable<string> {
+    return this.http.put<string>(`${environment.baseApi}/properties/${property_id}`, data).pipe(
+      catchError((error: any) => {
+        return throwError('An error occurred while trying to delete property');
+      })
+    );
+  }
 }
