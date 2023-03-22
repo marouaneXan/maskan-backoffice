@@ -1,0 +1,72 @@
+<div *ngIf="modalPropertyDetails" class="w-full">
+    <div
+        class="flex overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 h-modal sm:h-full">
+        <div class="relative px-4 w-full max-w-2xl h-full md:h-auto max-h-screen overflow-y-auto">
+            <div class="relative bg-white rounded-2xl shadow-lg">
+                <div class="flex justify-between items-start p-5 rounded-t border-b">
+                    <h3 class="text-xl font-medium">Property details</h3>
+                    <button (click)="togglemodalPropertyDetails()" type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-2xl text-sm p-1.5 ml-auto inline-flex items-center"
+                        data-modal-toggle="add-product-modal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fillRule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clipRule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="px-6 py-4 space-y-4 overflow-y-auto h-96">
+                    <div class="flex justify-between items-center">
+                        <div class="flex gap-[1rem] items-center">
+                            <div class="ingo">
+                                <h3 class="font-medium">{{propertySelected.title}}</h3>
+                                <small class='text-gray-500'>{{propertySelected.createdAt | date}}</small>
+                            </div>
+                        </div>
+                        <span class='edit'>
+                            <i class="fa-solid fa-heart"></i>
+                            {{propertySelected?.favorites?.length}}
+                        </span>
+                    </div>
+                    <div class='max-w-[1200px] h-[350px] w-full m-auto relative group'>
+                        <div class="w-full h-full rounded-md bg-center bg-cover duration-500"
+                            [style.backgroundImage]="'url(' + slides[currentIndex].url + ')'"></div>
+                        <div
+                            class='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                            <i (click)="prevSlide()" class="fa-solid fa-arrow-left " size={30}></i>
+                        </div>
+                        <div
+                            class='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                            <i (click)="nextSlide()" class="fa-solid fa-arrow-right " size={30}></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p><b>Description: </b> <br> 
+                            {{propertySelected.desc}}</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center">
+                        <p><i class="fa-solid fa-location-dot mr-2"></i><b>Localisation: </b>{{propertySelected.city}}</p>
+                        <p><i class="fa-solid fa-check-to-slot mr-2"></i><b>Adress: </b>{{propertySelected.adress}}</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center">
+                        <p><i class="fa-solid fa-bolt mr-2"></i><b>Category: </b>{{propertySelected.category.category}}</p>
+                        <p><i class="fa-solid fa-layer-group mr-2"></i><b>Type: </b>{{propertySelected.type.type}}</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center">
+                        <p><i class="fa-solid fa-chart-simple mr-2"></i><b>Characteristics: </b>{{propertySelected.characteristic.name}}</p>
+                        <p><i class="fa-solid fa-chart-simple mr-2"></i><b>Size: </b>{{propertySelected.size}}</p>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between items-center mb-5">
+                        <p><i class="fa-solid fa-bed mr-2"></i><b>Bedrooms: </b>{{propertySelected.bedrooms}}</p>
+                        <p><i class="fa-solid fa-bars-staggered mr-2"></i><b>Stages: </b>{{propertySelected.stage}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+</div>

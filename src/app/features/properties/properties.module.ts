@@ -11,6 +11,7 @@ import { SpinnerModule } from '../spinner/spinner.module';
 import { PropertyVisibilityComponent } from './components/property-visibility/property-visibility.component';
 import { DeletePropertyComponent } from './components/delete-property/delete-property.component';
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
+import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 
 
 
@@ -22,6 +23,7 @@ import { UpdatePropertyComponent } from './components/update-property/update-pro
     PropertyVisibilityComponent,
     DeletePropertyComponent,
     UpdatePropertyComponent,
+    PropertyDetailsComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

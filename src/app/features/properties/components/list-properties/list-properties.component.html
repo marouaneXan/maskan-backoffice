@@ -8,6 +8,11 @@
   [propertySelected]="propertySelected"
   (onUpdatedProperty)="getAllProperties()"
   ></app-update-property>
+<app-property-details
+[togglemodalPropertyDetails]="togglemodalPropertyDetails"
+[propertySelected]="propertySelected"
+[modalPropertyDetails]="modalPropertyDetails"
+></app-property-details>
 <div *ngIf="!isLoading" class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-50">
   <div class="rounded-t py-3 border-0 mb-5">
     <div class="flex flex-wrap items-center">
@@ -87,7 +92,7 @@
               class="fa-solid fa-pen text-[14px] cursor-pointer"></i>
             <i (click)="togglemodalDeleteProperty();propertySelected=property._id"
               class="fa-solid fa-trash text-[14px] cursor-pointer text-red-500"></i>
-            <i class="fa-solid fa-angles-right text-[14px] cursor-pointer"></i>
+            <i (click)="togglemodalPropertyDetails();propertySelected=property" class="fa-solid fa-angles-right text-[14px] cursor-pointer"></i>
           </td>
         </tr>
       </tbody>
