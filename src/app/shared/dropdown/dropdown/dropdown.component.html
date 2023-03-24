@@ -9,8 +9,8 @@
     </div>
   </a>
   <mat-menu #beforeMenu="matMenu" xPosition="before" class="mt-4 w-36">
-    <button mat-menu-item class="flex">
-      <a routerLink="/account/info" class="flex justify-start items-center hover:bg-gray-100">
+    <button [routerLink]="['/admin/dashboard/profile']" mat-menu-item class="flex">
+      <a class="flex justify-start items-center hover:bg-gray-100">
         <i class="pi pi-user mr-4"></i>
         <span>Profile</span>
       </a>
