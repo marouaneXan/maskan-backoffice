@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ListCharacteristicsComponent } from './components/list-characteristics/list-characteristics.component';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 
 
@@ -11,7 +12,8 @@ import { ListCharacteristicsComponent } from './components/list-characteristics/
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SpinnerModule
   ],
   exports:[
     ListCharacteristicsComponent

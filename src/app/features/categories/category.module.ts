@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 
 
@@ -11,7 +12,8 @@ import { ListCategoriesComponent } from './components/list-categories/list-categ
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SpinnerModule
   ],
   exports:[
     ListCategoriesComponent

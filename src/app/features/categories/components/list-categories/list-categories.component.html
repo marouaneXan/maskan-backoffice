@@ -15,9 +15,10 @@
             </div>
         </div>
     </div>
+    <app-spinner *ngIf="isLoading" [props]="{width:'28px',height:'28px'}"></app-spinner>
     <div class="block w-full overflow-x-auto">
         <!-- Projects table -->
-        <table class="items-center w-full bg-transparent border-collapse">
+        <table *ngIf="!isLoading" class="items-center w-full bg-transparent border-collapse">
             <thead class="thead-light">
                 <tr>
                     <th
