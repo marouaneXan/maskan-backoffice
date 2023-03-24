@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CategoryModule } from 'src/app/features/categories/category.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TypeModule } from 'src/app/features/type/type.module';
+import { CharacteristicModule } from 'src/app/features/characteristic/characteristic.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { TypeModule } from 'src/app/features/type/type.module';
   imports: [
     CommonModule,
     CategoryModule,
-    TypeModule
+    TypeModule,
+    CharacteristicModule
   ]
 })
 export class DashboardModule { }
