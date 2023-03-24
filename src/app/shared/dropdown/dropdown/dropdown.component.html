@@ -1,0 +1,25 @@
+<ul [matMenuTriggerFor]="beforeMenu" class="flex-col list-none items-center hidden md:flex">
+  <a class="text-blue-500 block">
+    <div class="items-center flex">
+      <span
+        class="w-10 h-10 text-sm text-white cursor-pointer bg-blueGray-200 inline-flex items-center justify-center rounded-full">
+        <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg"
+          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" />
+      </span>
+    </div>
+  </a>
+  <mat-menu #beforeMenu="matMenu" xPosition="before" class="mt-4 w-36">
+    <button mat-menu-item class="flex">
+      <a routerLink="/account/info" class="flex justify-start items-center hover:bg-gray-100">
+        <i class="pi pi-user mr-4"></i>
+        <span>Profile</span>
+      </a>
+    </button>
+    <button mat-menu-item>
+      <p (click)="logout()" class="flex justify-start items-center hover:bg-gray-100">
+        <i class="pi pi-power-off mr-4"></i>
+        <span>Sign out</span>
+      </p>
+    </button>
+  </mat-menu>
+</ul>

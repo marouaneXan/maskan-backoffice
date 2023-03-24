@@ -4,16 +4,6 @@
     <!-- Brand -->
     <h2 class="text-sm hidden lg:inline-block font-medium">{{currentRoute ? currentRoute:'/admin/dashboard/'}}</h2>
     <!-- User -->
-    <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-      <a class="text-blue-500 block">
-        <div class="items-center flex">
-          <span
-            class="w-10 h-10 text-sm text-white cursor-pointer bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-            <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" />
-          </span>
-        </div>
-      </a>
-    </ul>
+    <app-dropdown></app-dropdown>
   </div>
 </nav>

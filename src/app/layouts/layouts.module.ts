@@ -3,23 +3,21 @@ import { CommonModule } from '@angular/common';
 import { LayoutsRoutingModule } from './layouts-routing.module';
 
 import { LayoutComponent } from './layout/layout.component';
-import { SidebarComponent } from '../views/partials/sidebar/sidebar.component';
 import { DashboardComponent } from '../views/dashboard/dashboard/dashboard.component';
-import { NavbarComponent } from '../views/partials/navbar/navbar.component';
 import { PropertiesViewsModule } from '../views/properties-views/properties-views.module';
+import { PartialsModule } from '../views/partials/partials.module';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    SidebarComponent,
     DashboardComponent,
-    NavbarComponent,
   ],
   imports: [
     CommonModule,
     LayoutsRoutingModule,
-    PropertiesViewsModule
+    PropertiesViewsModule,
+    PartialsModule
   ],
   
 })
