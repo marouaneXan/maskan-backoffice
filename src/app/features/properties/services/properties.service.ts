@@ -10,6 +10,14 @@ import { catchError, throwError, Observable } from 'rxjs';
 export class PropertiesService {
 
   constructor(private http: HttpClient) { }
+  uploadImages(files: File[]) {
+    const form = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      form.append('file', files[i]);
+    }
+    form.append('upload_preset', 'dq80asfsi');
+    return this.http.post('https://api.cloudinary.com/v1_1/dq80asfsi', form)
+  }
   addProperty(property: Property, category_id: string, type_id: string, characteristic_id: string): Observable<string> {
     return this.http.post<string>(`${environment.baseApi}/properties/${category_id}/${type_id}/${characteristic_id}`, property)
   }

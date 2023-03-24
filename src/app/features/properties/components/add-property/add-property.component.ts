@@ -1,8 +1,9 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
-import { LoadingService } from 'src/app/core/services/loading.service';
+import { LoadingService } from 'src/app/core/services/loading.service'
+
 
 @Component({
   selector: 'app-add-property',
@@ -14,7 +15,9 @@ export class AddPropertyComponent {
   status: boolean = false
   step: number = 0
   isLoading = false
-  constructor(private toastr: ToastrService, private propertyService: PropertiesService, private loadinService: LoadingService) { }
+  images: File[] = [];
+  constructor(private toastr: ToastrService, private propertyService: PropertiesService, private loadinService: LoadingService) {
+  }
   toggleModalAddProperty() {
     this.status = !this.status
   }
@@ -24,6 +27,7 @@ export class AddPropertyComponent {
     bedrooms: new FormControl(null, [Validators.required]),
     city: new FormControl(null, [Validators.required]),
     stage: new FormControl(null, [Validators.required]),
+    images: new FormArray([]),
     price: new FormControl(null, [Validators.required]),
     size: new FormControl(null, [Validators.required]),
     desc: new FormControl(null, [Validators.required]),
@@ -51,6 +55,19 @@ export class AddPropertyComponent {
   addNewProperty(newProperty: FormGroup) {
     this.isLoading = true
     this.loadinService.show()
+    //upload images to cloudinary
+    this.propertyService.uploadImages(this.images).subscribe(
+      (res: any) => {
+        const imageUrls = res.map((image: any) => image.secure_url);
+        const imageControls = this.newProperty.get('images') as FormArray;
+        imageUrls.forEach((url:string) => {
+          imageControls.push(new FormControl(url));
+        });
+      },
+      err => {
+        this.toastr.error(err.error.message);
+      }
+    );
     this.propertyService.addProperty(newProperty.value, newProperty.value.category, newProperty.value.type, newProperty.value.characteristic).subscribe(
       (res: any) => {
         this.toastr.success(res.message)
@@ -63,5 +80,14 @@ export class AddPropertyComponent {
         this.toastr.error(err.error.message)
       }
     )
+  }
+  onFileSelected(event: any) {
+    this.images = [...this.images, ...event.target.files];
+  }
+  cancelUpload(image: File) {
+    const index = this.images.indexOf(image);
+    if (index > -1) {
+      this.images.splice(index, 1);
+    }
   }
 }

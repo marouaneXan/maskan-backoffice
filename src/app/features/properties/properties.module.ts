@@ -12,6 +12,7 @@ import { PropertyVisibilityComponent } from './components/property-visibility/pr
 import { DeletePropertyComponent } from './components/delete-property/delete-property.component';
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
+import {CloudinaryModule} from '@cloudinary/ng';
 
 
 
@@ -34,7 +35,8 @@ import { PropertyDetailsComponent } from './components/property-details/property
     CategoriesSelectModule,
     TypePropertySelectModule,
     CharacteristicSelectModule,
-    SpinnerModule
+    SpinnerModule,
+    CloudinaryModule
   ],
   exports: [
     ListPropertiesComponent,
