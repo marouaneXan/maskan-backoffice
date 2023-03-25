@@ -14,6 +14,7 @@ export class ListCharacteristicsComponent {
   isLoading = false
   ModalAddCharacteristic: boolean = false
   modalDeleteCharacteristic: boolean = false
+  modalUpdateCharacteristic: boolean = false
   characteristicSelected: any
   constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService, private router: Router) { }
   ngOnInit(): void {
@@ -27,6 +28,9 @@ export class ListCharacteristicsComponent {
   }
   togglemodalDeleteCharacteristic() {
     this.modalDeleteCharacteristic = !this.modalDeleteCharacteristic
+  }
+  togglemodalUpdateCharacteristic() {
+    this.modalUpdateCharacteristic = !this.modalUpdateCharacteristic
   }
   getAllCharacteristics() {
     this.isLoading = true
