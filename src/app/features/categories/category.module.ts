@@ -7,6 +7,7 @@ import { CategoryRouting } from './category-routing.module';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { DeleteCategoryComponent } from './components/delete-category/delete-cat
     CommonModule,
     HttpClientModule,
     SpinnerModule,
-    CategoryRouting
+    CategoryRouting,
+    ReactiveFormsModule
   ],
   exports:[
     ListCategoriesComponent

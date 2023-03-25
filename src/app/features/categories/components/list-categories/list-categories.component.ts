@@ -11,21 +11,25 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 export class ListCategoriesComponent implements OnInit {
   categories: Category[] = []
   isLoading = false
-  modalDeleteCategory:boolean=false
-  categorySelected:any
+  modalDeleteCategory: boolean = false
+  ModalUpdateCategory: boolean = false
+  categorySelected: any
   constructor(private categoryService: CategoryService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllCategories()
   }
-  togglemodalDeleteCategory(){
-    this.modalDeleteCategory=!this.modalDeleteCategory
+  togglemodalDeleteCategory() {
+    this.modalDeleteCategory = !this.modalDeleteCategory
+  }
+  toggleModalUpdateCategory() {
+    this.ModalUpdateCategory = !this.ModalUpdateCategory
   }
   getAllCategories() {
     this.isLoading = true
     this.loadingService.show()
     this.categoryService.getCategories().subscribe(
       res => {
-        this.categories=res as Category[]
+        this.categories = res as Category[]
         this.isLoading = false
         this.loadingService.hide()
       },

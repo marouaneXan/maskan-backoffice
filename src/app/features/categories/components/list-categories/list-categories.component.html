@@ -1,5 +1,7 @@
 <app-delete-category [modalDeleteCategory]="modalDeleteCategory" [togglemodalDeleteCategory]="togglemodalDeleteCategory"
     (onDeleteCategory)="getAllCategories()" [categorySelected]="categorySelected"></app-delete-category>
+<app-update-category [ModalUpdateCategory]="ModalUpdateCategory" [toggleModalUpdateCategory]="toggleModalUpdateCategory"
+    (onUpdatedCategory)="getAllCategories()" [categorySelected]="categorySelected"></app-update-category>
 <div class="relative flex flex-col min-w-0 break-words bg-gray-100 w-full mb-6 shadow-lg rounded">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -47,7 +49,7 @@
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div class="flex space-x-1 items-center">
-                            <i class="fa-solid fa-pen text-[14px] cursor-pointer"></i>
+                            <i (click)="toggleModalUpdateCategory();categorySelected=category" class="fa-solid fa-pen text-[14px] cursor-pointer"></i>
                             <i (click)="togglemodalDeleteCategory();categorySelected=category._id"
                                 class="fa-solid fa-trash text-[14px] cursor-pointer text-red-500"></i>
                         </div>
