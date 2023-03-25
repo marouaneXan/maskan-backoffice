@@ -62,10 +62,11 @@
                     </div>
                 </form>
                 <div class="p-6 rounded-b border-t border-gray-200">
-                    <button (click)="updateAdminInformation(updatedAdminInformation)"
-                        class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    <button [disabled]="isLoading" (click)="updateAdminInformation(updatedAdminInformation)"
+                        class="bg-blue-600 text-white active:bg-blue-600 text-sm font-medium uppercase px-2 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
                         type="button">
-                        save changes
+                        <app-spinner *ngIf="isLoading" [props]="{width:'22px',height:'22px'}"></app-spinner>
+                        {{ !isLoading ? 'save changes' :''}}
                     </button>
                 </div>
             </div>
