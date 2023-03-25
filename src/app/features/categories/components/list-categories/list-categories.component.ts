@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/features/properties/interface/property';
 import { CategoryService } from '../../services/category.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-categories',
@@ -14,9 +15,12 @@ export class ListCategoriesComponent implements OnInit {
   modalDeleteCategory: boolean = false
   ModalUpdateCategory: boolean = false
   categorySelected: any
-  constructor(private categoryService: CategoryService, private loadingService: LoadingService) { }
+  constructor(private categoryService: CategoryService, private loadingService: LoadingService,private router :Router) { }
   ngOnInit(): void {
     this.getAllCategories()
+  }
+  isCategoryPage(): boolean {
+    return this.router.url === '/admin/dashboard/categories';
   }
   togglemodalDeleteCategory() {
     this.modalDeleteCategory = !this.modalDeleteCategory
