@@ -11,9 +11,14 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 export class ListCategoriesComponent implements OnInit {
   categories: Category[] = []
   isLoading = false
+  modalDeleteCategory:boolean=false
+  categorySelected:any
   constructor(private categoryService: CategoryService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllCategories()
+  }
+  togglemodalDeleteCategory(){
+    this.modalDeleteCategory=!this.modalDeleteCategory
   }
   getAllCategories() {
     this.isLoading = true
