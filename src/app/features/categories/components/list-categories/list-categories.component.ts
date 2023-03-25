@@ -14,6 +14,7 @@ export class ListCategoriesComponent implements OnInit {
   isLoading = false
   modalDeleteCategory: boolean = false
   ModalUpdateCategory: boolean = false
+  ModalAddCategory: boolean = false
   categorySelected: any
   constructor(private categoryService: CategoryService, private loadingService: LoadingService,private router :Router) { }
   ngOnInit(): void {
@@ -27,6 +28,9 @@ export class ListCategoriesComponent implements OnInit {
   }
   toggleModalUpdateCategory() {
     this.ModalUpdateCategory = !this.ModalUpdateCategory
+  }
+  toggleModalAddCategory() {
+    this.ModalAddCategory = !this.ModalAddCategory
   }
   getAllCategories() {
     this.isLoading = true
