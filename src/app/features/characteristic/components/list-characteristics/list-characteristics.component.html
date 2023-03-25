@@ -1,3 +1,6 @@
+<app-add-characteristic [ModalAddCharacteristic]="ModalAddCharacteristic"
+    [toggleModalAddCharacteristic]="toggleModalAddCharacteristic"
+    (onAddCharacteristic)="getAllCharacteristics()"></app-add-characteristic>
 <div class="relative flex flex-col min-w-0 break-words bg-gray-100 w-full mb-6 shadow-lg rounded">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
@@ -7,10 +10,15 @@
                 </h3>
             </div>
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                <button
+                <button *ngIf="!isCharacteristicPage()" routerLink="/admin/dashboard/characteristics"
                     class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-medium uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button">
                     See all
+                </button>
+                <button *ngIf="isCharacteristicPage()" (click)="toggleModalAddCharacteristic()"
+                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-medium uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button">
+                    Add characteristic
                 </button>
             </div>
         </div>
@@ -54,4 +62,3 @@
         </table>
     </div>
 </div>
-

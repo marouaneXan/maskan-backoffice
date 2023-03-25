@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { CharacteristicService } from '../../services/characteristic.service';
 import { Characteristic } from 'src/app/features/properties/interface/property';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-characteristics',
@@ -11,11 +12,18 @@ import { Characteristic } from 'src/app/features/properties/interface/property';
 export class ListCharacteristicsComponent {
   characteristics: Characteristic[] = []
   isLoading = false
-  constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService) { }
+  ModalAddCharacteristic:boolean = false
+  constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService,private router:Router) { }
   ngOnInit(): void {
-    this.getAllCategories()
+    this.getAllCharacteristics()
   }
-  getAllCategories() {
+  isCharacteristicPage():boolean{
+    return this.router.url==='/admin/dashboard/characteristics'
+  }
+  toggleModalAddCharacteristic() {
+    this.ModalAddCharacteristic = !this.ModalAddCharacteristic
+  }
+  getAllCharacteristics() {
     this.isLoading = true
     this.loadingService.show()
     this.characteristicService.getAllCharacteristics().subscribe(
