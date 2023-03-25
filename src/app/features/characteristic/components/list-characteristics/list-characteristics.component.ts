@@ -12,16 +12,21 @@ import { Router } from '@angular/router';
 export class ListCharacteristicsComponent {
   characteristics: Characteristic[] = []
   isLoading = false
-  ModalAddCharacteristic:boolean = false
-  constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService,private router:Router) { }
+  ModalAddCharacteristic: boolean = false
+  modalDeleteCharacteristic: boolean = false
+  characteristicSelected: any
+  constructor(private characteristicService: CharacteristicService, private loadingService: LoadingService, private router: Router) { }
   ngOnInit(): void {
     this.getAllCharacteristics()
   }
-  isCharacteristicPage():boolean{
-    return this.router.url==='/admin/dashboard/characteristics'
+  isCharacteristicPage(): boolean {
+    return this.router.url === '/admin/dashboard/characteristics'
   }
   toggleModalAddCharacteristic() {
     this.ModalAddCharacteristic = !this.ModalAddCharacteristic
+  }
+  togglemodalDeleteCharacteristic() {
+    this.modalDeleteCharacteristic = !this.modalDeleteCharacteristic
   }
   getAllCharacteristics() {
     this.isLoading = true
