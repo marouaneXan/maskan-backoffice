@@ -20,14 +20,15 @@ export class AdminInformationsComponent implements OnInit {
   }
   isLoading: boolean = false
   isDisabled: boolean = true
+  ModalUpdateAdminInformation: boolean = false
   constructor(private loadingService: LoadingService, private adminService: AdminService, private tokenService: TokenService) { }
   ngOnInit(): void {
-    this.getAminInfo()
+    this.getAdminInfo()
   }
-  toggleDisabled() {
-    this.isDisabled = !this.isDisabled;
+  toggleModalUpdateAdminInformation() {
+    this.ModalUpdateAdminInformation = !this.ModalUpdateAdminInformation;
   }
-  getAminInfo() {
+  getAdminInfo() {
     this.isLoading = true
     this.loadingService.show()
     this.adminService.getAdminInformations(this.tokenService.getAdminIdFromPayload()).subscribe(
