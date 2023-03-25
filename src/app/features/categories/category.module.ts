@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { SpinnerModule } from '../spinner/spinner.module';
+import { CategoryRouting } from './category-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { SpinnerModule } from '../spinner/spinner.module';
   imports: [
     CommonModule,
     HttpClientModule,
-    SpinnerModule
+    SpinnerModule,
+    CategoryRouting
   ],
   exports:[
     ListCategoriesComponent
