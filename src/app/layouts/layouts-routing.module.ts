@@ -11,10 +11,11 @@ const routes: Routes = [
         children: [
             { path: '', component: DashboardComponent },
             { path: 'clients', component: ClientsComponent },
-            { path: '', loadChildren:()=> import('../views/properties-views/properties-views.module').then(m=>m.PropertiesViewsModule) },
-            { path: '', loadChildren:()=> import('../views/profile/profile.module').then(m=>m.ProfileModule) },
-            { path: '', loadChildren:()=> import('../features/categories/category.module').then(m=>m.CategoryModule) },
-            { path: '', loadChildren:()=> import('../features/characteristic/characteristic.module').then(m=>m.CharacteristicModule) },
+            { path: '', loadChildren: () => import('../views/properties-views/properties-views.module').then(m => m.PropertiesViewsModule) },
+            { path: '', loadChildren: () => import('../views/profile/profile.module').then(m => m.ProfileModule) },
+            { path: '', loadChildren: () => import('../features/categories/category.module').then(m => m.CategoryModule) },
+            { path: '', loadChildren: () => import('../features/characteristic/characteristic.module').then(m => m.CharacteristicModule) },
+            { path: '', loadChildren: () => import('../features/type/type.module').then(m => m.TypeModule) },
         ]
     },
 ];

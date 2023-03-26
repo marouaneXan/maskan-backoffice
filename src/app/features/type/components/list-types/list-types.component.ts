@@ -11,16 +11,21 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 export class ListTypesComponent {
   types: Type[] = []
   isLoading = false
+  modalDeleteType: boolean = false
+  typeSelected: any
   constructor(private typeService: TypeService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllTypes()
+  }
+  togglemodalDeleteType() {
+    this.modalDeleteType = !this.modalDeleteType
   }
   getAllTypes() {
     this.isLoading = true
     this.loadingService.show()
     this.typeService.getTypesProperties().subscribe(
       res => {
-        this.types=res as Type[]
+        this.types = res as Type[]
         this.isLoading = false
         this.loadingService.hide()
       },

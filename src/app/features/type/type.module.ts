@@ -6,6 +6,7 @@ import { SpinnerModule } from '../spinner/spinner.module';
 import { AddTypeComponent } from './components/add-type/add-type.component';
 import { UpdateTypeComponent } from './components/update-type/update-type.component';
 import { DeleteTypeComponent } from './components/delete-type/delete-type.component';
+import { TypeRouting } from './type-routing.module';
 
 
 
@@ -19,7 +20,8 @@ import { DeleteTypeComponent } from './components/delete-type/delete-type.compon
   imports: [
     CommonModule,
     HttpClientModule,
-    SpinnerModule
+    SpinnerModule,
+    TypeRouting
   ],
   exports:[
     ListTypesComponent
