@@ -1,1 +1,60 @@
-<p>list-clients works!</p>
+<app-spinner *ngIf="isLoading" [props]="{width:'28px',height:'28px'}"></app-spinner>
+<div *ngIf="!isLoading" class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-50">
+    <div class="rounded-t py-3 border-0 mb-5">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="text-lg font-medium">
+                    List of clients
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <!-- Projects table -->
+        <table class="items-center w-full bg-transparent border-collapse">
+            <thead>
+                <tr>
+                    <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        name
+                    </th>
+                    <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        date of birth
+                    </th>
+                    <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        email
+                    </th>
+                    <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        phone
+                    </th>
+                    <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        city
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                        {{client.name}}
+                    </td>
+                    <td class="space-x-2 border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                        {{client.dateOfBirth | date}}
+                    </td>
+                    <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                        {{client.email}}
+                    </td>
+                    <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                        {{client.phone}}
+                    </td>
+                    <td class="border-t-0 px-6 border-l-0 border-r-0 text-xs whitespace-nowrap p-2">
+                        {{client.city}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

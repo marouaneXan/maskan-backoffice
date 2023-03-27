@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { ClientsRoutingModule } from './clients-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ClientsRoutingModule } from './clients-routing.module';
   ],
   imports: [
     CommonModule,
-    ClientsRoutingModule
+    ClientsRoutingModule,
+    HttpClientModule,
+    SpinnerModule
   ],
   exports: [ListClientsComponent]
 })
