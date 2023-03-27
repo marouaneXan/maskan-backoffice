@@ -7,6 +7,7 @@ import { AddTypeComponent } from './components/add-type/add-type.component';
 import { UpdateTypeComponent } from './components/update-type/update-type.component';
 import { DeleteTypeComponent } from './components/delete-type/delete-type.component';
 import { TypeRouting } from './type-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { TypeRouting } from './type-routing.module';
     CommonModule,
     HttpClientModule,
     SpinnerModule,
-    TypeRouting
+    TypeRouting,
+    ReactiveFormsModule
   ],
   exports:[
     ListTypesComponent
