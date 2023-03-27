@@ -14,8 +14,9 @@ export class ListTypesComponent {
   isLoading = false
   modalDeleteType: boolean = false
   ModalAddType: boolean = false
+  ModalUpdateType: boolean = false
   typeSelected: any
-  constructor(private typeService: TypeService, private loadingService: LoadingService,private router:Router) { }
+  constructor(private typeService: TypeService, private loadingService: LoadingService, private router: Router) { }
   ngOnInit(): void {
     this.getAllTypes()
   }
@@ -25,8 +26,11 @@ export class ListTypesComponent {
   toggleModalAddType = (): void => {
     this.ModalAddType = !this.ModalAddType
   }
-  isTypePage(){
-    return this.router.url==="/admin/dashboard/types"
+  toggleModalUpdateType = (): void => {
+    this.ModalUpdateType = !this.ModalUpdateType
+  }
+  isTypePage() {
+    return this.router.url === "/admin/dashboard/types"
   }
   getAllTypes() {
     this.isLoading = true
