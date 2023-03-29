@@ -101,7 +101,7 @@
   </div>
 </div>
 <div *ngIf="!isLoading && !empty" class="flex py-6 justify-between items-center mt-4">
-  <a (click)="onPageChange(currentPage - 1)"
+  <a *ngIf="currentPage !== 1" (click)=" onPageChange(currentPage - 1)"
     class="inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-600 bg-white border border-gray-500 cursor-pointer rounded-lg hover:bg-gray-100 hover:text-gray-700">
     <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@
     </svg>
     Previous
   </a>
-  <a (click)="onPageChange(currentPage + 1)"
+  <a *ngIf="currentPage === totalPages" (click)="onPageChange(currentPage + 1)"
     class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-500 cursor-pointer rounded-lg hover:bg-gray-100 hover:text-gray-700">
     Next
     <svg aria-hidden="true" class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"
