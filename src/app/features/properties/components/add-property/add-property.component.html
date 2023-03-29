@@ -1,47 +1,11 @@
 <div class="flex justify-between items-center mb-5">
     <button (click)="toggleModalAddProperty()"
-        class="bg-red-500 z-40 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+        class="bg-red-500 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
         type="button">
         <i class="fa-solid fa-plus"></i>
         add properties
     </button>
-    <div class="flex -items-center space-x-2 ">
-        <div class="w-full">
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>City</option>
-                <option value="US">United States</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Bedrooms</option>
-                <option value="US">1</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Stages</option>
-                <option value="US">1</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Category</option>
-                <option value="US">1</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Type</option>
-                <option value="US">1</option>
-            </select>
-        </div>
-    </div>
+    <app-search-property></app-search-property>
 </div>
 
 <!--Modal add properties-->
@@ -139,10 +103,10 @@
                     </div>
                     <div *ngIf="step===2" class="flex space-x-2 w-full flex-wrap">
                         <div *ngFor="let url of previewUrls; let i = index">
-                          <img [src]="url" style="width: 180px; height: 180px;">
-                          <button (click)="cancelUpload(images[i])">Cancel</button>
+                            <img [src]="url" style="width: 180px; height: 180px;">
+                            <button (click)="cancelUpload(images[i])">Cancel</button>
                         </div>
-                      </div>
+                    </div>
                     <div *ngIf="step===2" class="flex items-center justify-center w-full">
                         <label for="dropzone-file"
                             class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 ">
