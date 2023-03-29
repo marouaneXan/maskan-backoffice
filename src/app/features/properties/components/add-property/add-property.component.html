@@ -63,7 +63,6 @@
                     </button>
                 </div>
                 <form class="px-6 py-2 space-y-2 overflow-y-auto h-96" [formGroup]="newProperty">
-                    <h3 class="text-[18px] font-medium text-center">Characteristic</h3>
                     <div class="grid grid-cols-6 gap-6">
                         <div *ngIf="step===0" class="col-span-6 sm:col-span-3">
                             <label class="block mb-2 text-sm font-medium text-gray-900">
@@ -168,7 +167,7 @@
                         type="button">
                         next
                     </button>
-                    <button *ngIf="step===1" (click)="previous()"
+                    <button *ngIf="step===1 || step===2" (click)="previous()"
                         class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button">
                         back
@@ -176,7 +175,7 @@
                     <button *ngIf="step===1" (click)="next()"
                         class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                         type="button">
-                        add new
+                        next
                     </button>
                     <button *ngIf="step===2" (click)="addNewProperty(newProperty)"
                         class="bg-blue-600 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
