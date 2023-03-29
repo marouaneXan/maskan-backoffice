@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
@@ -17,7 +17,8 @@ export class AddPropertyComponent {
   step: number = 0
   isLoading = false
   images: File[] = [];
-  constructor(private toastr: ToastrService, private propertyService: PropertiesService, private loadinService: LoadingService) {
+  previewUrls: string[] = [];
+  constructor(private toastr: ToastrService,private cdr: ChangeDetectorRef, private propertyService: PropertiesService, private loadinService: LoadingService) {
   }
   toggleModalAddProperty() {
     this.status = !this.status
@@ -83,7 +84,16 @@ export class AddPropertyComponent {
     for (let i = 0; i < event.target.files.length; i++) {
       const file = event.target.files[i];
       this.images.push(file);
+      this.previewImages(file)
     }
+  }
+  previewImages(file: File) {
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.previewUrls.push(event.target.result);
+      this.cdr.detectChanges();
+    };
+    reader.readAsDataURL(file);
   }
 
   cancelUpload(image: File) {

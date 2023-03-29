@@ -139,11 +139,11 @@
                         </div>
                     </div>
                     <div *ngIf="step===2" class="flex space-x-2 w-full flex-wrap">
-                        <div *ngFor="let image of images">
-                            <img [src]="image" style="width: 180px; height: 180px;">
-                            <button (click)="cancelUpload(image)">Cancel</button>
+                        <div *ngFor="let url of previewUrls; let i = index">
+                          <img [src]="url" style="width: 180px; height: 180px;">
+                          <button (click)="cancelUpload(images[i])">Cancel</button>
                         </div>
-                    </div>
+                      </div>
                     <div *ngIf="step===2" class="flex items-center justify-center w-full">
                         <label for="dropzone-file"
                             class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 ">
