@@ -10,6 +10,10 @@ export interface Characteristic {
     _id: string,
     name: string
 }
+export interface Image{
+    url:string,
+    id:string
+}
 export interface Property {
     _id: string
     title: string,
@@ -21,6 +25,7 @@ export interface Property {
     price: string,
     size: string,
     desc: string,
+    images:Image[]
     category: Category,
     type: Type,
     characteristic: Characteristic,

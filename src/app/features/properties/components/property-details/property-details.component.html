@@ -30,7 +30,7 @@
                     </div>
                     <div class='max-w-[1200px] h-[350px] w-full m-auto relative group'>
                         <div class="w-full h-full rounded-md bg-center bg-cover duration-500"
-                            [style.backgroundImage]="'url(' + slides[currentIndex].url + ')'"></div>
+                            [style.backgroundImage]="'url(' + propertySelected.images[currentIndex].url + ')'"></div>
                         <div
                             class='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                             <i (click)="prevSlide()" class="fa-solid fa-arrow-left " size={30}></i>
