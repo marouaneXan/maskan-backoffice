@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
@@ -8,7 +8,8 @@ import { LoadingService } from 'src/app/core/services/loading.service'
 @Component({
   selector: 'app-add-property',
   templateUrl: './add-property.component.html',
-  styleUrls: ['./add-property.component.css']
+  styleUrls: ['./add-property.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddPropertyComponent {
   @Output() propertyAdded = new EventEmitter()
@@ -53,22 +54,19 @@ export class AddPropertyComponent {
     this.step--
   }
   addNewProperty(newProperty: FormGroup) {
+    const formData = new FormData();
+    for (const key in newProperty.value) {
+      if (key !== 'images') {
+        formData.append(key, newProperty.value[key]);
+      }
+    }
+    this.images.forEach((image, index) => {
+      formData.append(`images`, image);
+    });
+    console.log(this.newProperty.value);
     this.isLoading = true
     this.loadinService.show()
-    //upload images to cloudinary
-    this.propertyService.uploadImages(this.images).subscribe(
-      (res: any) => {
-        const imageUrls = res.map((image: any) => image.secure_url);
-        const imageControls = this.newProperty.get('images') as FormArray;
-        imageUrls.forEach((url:string) => {
-          imageControls.push(new FormControl(url));
-        });
-      },
-      err => {
-        this.toastr.error(err.error.message);
-      }
-    );
-    this.propertyService.addProperty(newProperty.value, newProperty.value.category, newProperty.value.type, newProperty.value.characteristic).subscribe(
+    this.propertyService.addProperty(formData, newProperty.value.category, newProperty.value.type, newProperty.value.characteristic).subscribe(
       (res: any) => {
         this.toastr.success(res.message)
         this.loadinService.hide()
@@ -82,8 +80,12 @@ export class AddPropertyComponent {
     )
   }
   onFileSelected(event: any) {
-    this.images = [...this.images, ...event.target.files];
+    for (let i = 0; i < event.target.files.length; i++) {
+      const file = event.target.files[i];
+      this.images.push(file);
+    }
   }
+
   cancelUpload(image: File) {
     const index = this.images.indexOf(image);
     if (index > -1) {
