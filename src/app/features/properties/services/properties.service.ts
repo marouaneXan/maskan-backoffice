@@ -13,8 +13,8 @@ export class PropertiesService {
   addProperty(property: FormData, category_id: string, type_id: string, characteristic_id: string): Observable<string> {
     return this.http.post<string>(`${environment.baseApi}/properties/${category_id}/${type_id}/${characteristic_id}`, property)
   }
-  getProperties(): Observable<Property[]> {
-    return this.http.get<Property[]>(`${environment.baseApi}/properties`)
+  getProperties(page: number, limit: number): Observable<Property[]> {
+    return this.http.get<Property[]>(`${environment.baseApi}/properties?page=${page}&limit=${limit}`)
   }
   changePropertyVisibility(property_id: string): Observable<string> {
     return this.http.patch<string>(`${environment.baseApi}/properties/${property_id}`, {}).pipe(

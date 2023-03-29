@@ -18,6 +18,9 @@ export class ListPropertiesComponent {
   modalPropertyDetails: boolean = false
   propertySelected: any
   empty: string = ''
+  currentPage: number = 1;
+  totalPages: number = 1;
+  totalItems: number = 0;
 
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
   ngOnInit(): void {
@@ -35,10 +38,10 @@ export class ListPropertiesComponent {
   togglemodalPropertyDetails(): void {
     this.modalPropertyDetails = !this.modalPropertyDetails
   }
-  getAllProperties() {
+  getAllProperties(page: number = 1, limit: number = 5) {
     this.isLoading = true
     this.loadingService.show()
-    this.propertyService.getProperties().subscribe(
+    this.propertyService.getProperties(page,limit).subscribe(
       (res: any) => {
         this.properties = res.properties as Property[]
         this.isLoading = false
@@ -52,5 +55,17 @@ export class ListPropertiesComponent {
 
       }
     )
+  }
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.getAllProperties(page);
+  }
+
+  getPages(): number[] {
+    const pages = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pages.push(i);
+    }
+    return pages;
   }
 }
