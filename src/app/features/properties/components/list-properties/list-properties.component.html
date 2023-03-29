@@ -8,7 +8,13 @@
   [propertySelected]="propertySelected" (onUpdatedProperty)="getAllProperties()"></app-update-property>
 <app-property-details [togglemodalPropertyDetails]="togglemodalPropertyDetails" [propertySelected]="propertySelected"
   [modalPropertyDetails]="modalPropertyDetails"></app-property-details>
-<div *ngIf="!isLoading" class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-50">
+<ng-container>
+  <div class="flex flex-col justify-center items-center h-96" *ngIf="empty">
+    <img width="300px" height="300px" src="../../../../../assets/images/house.svg" alt>
+    <strong>{{empty}}</strong>
+  </div>
+</ng-container>
+<div *ngIf="!isLoading && !empty" class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-50">
   <div class="rounded-t py-3 border-0 mb-5">
     <div class="flex flex-wrap items-center">
       <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -19,7 +25,7 @@
     </div>
   </div>
   <div class="block w-full overflow-x-auto">
-    <!-- Projects table -->
+    Projects table
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr>

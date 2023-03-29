@@ -17,6 +17,7 @@ export class ListPropertiesComponent {
   modalUpdateProperty: boolean = false
   modalPropertyDetails: boolean = false
   propertySelected: any
+  empty: string = ''
 
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
   ngOnInit(): void {
@@ -47,6 +48,8 @@ export class ListPropertiesComponent {
       err => {
         this.isLoading = false
         this.loadingService.hide()
+        this.empty = err.error.message;
+
       }
     )
   }
