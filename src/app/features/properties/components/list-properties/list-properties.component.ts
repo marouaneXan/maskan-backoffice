@@ -39,22 +39,25 @@ export class ListPropertiesComponent {
     this.modalPropertyDetails = !this.modalPropertyDetails
   }
   getAllProperties(page: number = 1, limit: number = 5) {
-    this.isLoading = true
-    this.loadingService.show()
-    this.propertyService.getProperties(page,limit).subscribe(
+    this.isLoading = true;
+    this.loadingService.show();
+    this.propertyService.getProperties(page, limit).subscribe(
       (res: any) => {
-        this.properties = res.properties as Property[]
-        this.isLoading = false
-        this.loadingService.hide()
-        this.propertiesEvent.emit(this.getAllProperties.bind(this))
+        this.properties = res.properties as Property[];
+        this.isLoading = false;
+        this.loadingService.hide();
+        // Set the totalPages, totalItems, and empty properties
+        this.totalItems = res.totalItems;
+        this.totalPages = res.totalPages;
+        this.empty = this.totalItems === 0 ? 'There is no properties' : '';
+        this.propertiesEvent.emit(this.getAllProperties.bind(this));
       },
-      err => {
-        this.isLoading = false
-        this.loadingService.hide()
+      (err) => {
+        this.isLoading = false;
+        this.loadingService.hide();
         this.empty = err.error.message;
-
       }
-    )
+    );
   }
   onPageChange(page: number) {
     this.currentPage = page;
