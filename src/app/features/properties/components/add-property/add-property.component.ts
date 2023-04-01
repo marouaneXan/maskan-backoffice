@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
 import { LoadingService } from 'src/app/core/services/loading.service'
+import { Property } from '../../interface/property';
 
 
 @Component({
@@ -13,6 +14,13 @@ import { LoadingService } from 'src/app/core/services/loading.service'
 })
 export class AddPropertyComponent {
   @Output() propertyAdded = new EventEmitter()
+  propertiesData: { properties: Property[], totalItems: number, totalPages: number, empty: string, isLoading: boolean } = {
+    properties: [],
+    totalItems: 0,
+    totalPages: 0,
+    empty: '',
+    isLoading: false
+  };
   status: boolean = false
   step: number = 0
   isLoading = false

@@ -10,6 +10,7 @@ import { PropertiesService } from '../../services/properties.service';
 })
 export class ListPropertiesComponent {
   @Output() propertiesEvent = new EventEmitter()
+  @Output() propertiesDataEvent = new EventEmitter<{ properties: Property[], totalItems: number, totalPages: number, empty: string, isLoading: boolean }>()
   properties: Property[] = []
   isLoading = false
   modalPropertyVisibility: boolean = false
@@ -51,6 +52,13 @@ export class ListPropertiesComponent {
         this.totalPages = res.totalPages;
         this.empty = this.totalItems === 0 ? 'There is no properties' : '';
         this.propertiesEvent.emit(this.getAllProperties.bind(this));
+        this.propertiesDataEvent.emit({
+          properties: this.properties,
+          totalItems: this.totalItems,
+          totalPages: this.totalPages,
+          empty: this.empty,
+          isLoading: this.isLoading
+        });
       },
       (err) => {
         this.isLoading = false;
