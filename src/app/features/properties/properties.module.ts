@@ -13,8 +13,6 @@ import { DeletePropertyComponent } from './components/delete-property/delete-pro
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 import {CloudinaryModule} from '@cloudinary/ng';
-import { SearchPropertyComponent } from './components/search-property/search-property.component';
-
 
 
 
@@ -26,7 +24,6 @@ import { SearchPropertyComponent } from './components/search-property/search-pro
     DeletePropertyComponent,
     UpdatePropertyComponent,
     PropertyDetailsComponent,
-    SearchPropertyComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -42,7 +39,8 @@ import { SearchPropertyComponent } from './components/search-property/search-pro
   ],
   exports: [
     ListPropertiesComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+
   ],
 })
 export class PropertiesModule { }

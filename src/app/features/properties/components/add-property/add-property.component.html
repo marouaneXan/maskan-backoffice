@@ -1,12 +1,9 @@
-<div class="flex justify-between items-center mb-5">
-    <button (click)="toggleModalAddProperty()"
-        class="bg-red-500 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-        type="button">
-        <i class="fa-solid fa-plus"></i>
-        add properties
-    </button>
-    <app-search-property [propertiesData]="propertiesData"></app-search-property>
-</div>
+<button (click)="toggleModalAddProperty()"
+    class="bg-red-500 cursor-pointer text-white active:bg-red-700 font-medium uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+    type="button">
+    <i class="fa-solid fa-plus"></i>
+    add properties
+</button>
 
 <!--Modal add properties-->
 <div class="w-full" *ngIf="status">

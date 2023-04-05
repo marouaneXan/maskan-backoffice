@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { Property } from '../../interface/property';
 import { PropertiesService } from '../../services/properties.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list-properties',
@@ -10,7 +11,6 @@ import { PropertiesService } from '../../services/properties.service';
 })
 export class ListPropertiesComponent {
   @Output() propertiesEvent = new EventEmitter()
-  @Output() propertiesDataEvent = new EventEmitter<{ properties: Property[], totalItems: number, totalPages: number, empty: string, isLoading: boolean }>()
   properties: Property[] = []
   isLoading = false
   modalPropertyVisibility: boolean = false
@@ -39,6 +39,31 @@ export class ListPropertiesComponent {
   togglemodalPropertyDetails(): void {
     this.modalPropertyDetails = !this.modalPropertyDetails
   }
+  searchForm = new FormGroup({
+    city: new FormControl('', [Validators.required]),
+    stage: new FormControl(''),
+    price: new FormControl(''),
+  })
+  //search properties
+  searchProperties(searchForm: FormGroup) {
+    this.isLoading = true;
+    this.loadingService.show();
+    this.propertyService.getProperties(1, 5, searchForm.value.city, searchForm.value.stage, searchForm.value.price).subscribe(
+      (res: any) => {
+        this.properties = res.properties as Property[];
+        this.isLoading = false;
+        this.loadingService.hide();
+        this.totalItems = res.totalItems;
+        this.totalPages = res.totalPages;
+        this.empty = this.totalItems === 0 ? 'There is no properties' : '';
+      },
+      (err) => {
+        this.isLoading = false;
+        this.loadingService.hide();
+        this.empty = err.error.message;
+      }
+    );
+  }
   getAllProperties(page: number = 1, limit: number = 5) {
     this.isLoading = true;
     this.loadingService.show();
@@ -52,13 +77,6 @@ export class ListPropertiesComponent {
         this.totalPages = res.totalPages;
         this.empty = this.totalItems === 0 ? 'There is no properties' : '';
         this.propertiesEvent.emit(this.getAllProperties.bind(this));
-        this.propertiesDataEvent.emit({
-          properties: this.properties,
-          totalItems: this.totalItems,
-          totalPages: this.totalPages,
-          empty: this.empty,
-          isLoading: this.isLoading
-        });
       },
       (err) => {
         this.isLoading = false;
