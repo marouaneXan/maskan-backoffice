@@ -15,14 +15,11 @@
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
                             <div
-                                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full">
-                                <i class="far fa-chart-bar"></i>
+                                class="text-white bg-gray-400 p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full">
+                                <i [class]="card.icon"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-400 mt-4">
-                        <span class="whitespace-nowrap">{{card.desc}}</span>
-                    </p>
                 </div>
             </div>
         </div>
