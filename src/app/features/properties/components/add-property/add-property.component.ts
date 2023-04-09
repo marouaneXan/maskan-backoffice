@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PropertiesService } from '../../services/properties.service';
 import { LoadingService } from 'src/app/core/services/loading.service'
+import { cities } from 'src/app/data/cities';
 
 @Component({
   selector: 'app-add-property',
@@ -10,14 +11,18 @@ import { LoadingService } from 'src/app/core/services/loading.service'
   styleUrls: ['./add-property.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddPropertyComponent {
+export class AddPropertyComponent implements OnInit {
   @Output() propertyAdded = new EventEmitter()
   status: boolean = false
   step: number = 0
   isLoading = false
   images: File[] = [];
   previewUrls: string[] = [];
-  constructor(private toastr: ToastrService,private cdr: ChangeDetectorRef, private propertyService: PropertiesService, private loadinService: LoadingService) {
+  moroccanCities : any =[]
+  constructor(private toastr: ToastrService, private cdr: ChangeDetectorRef, private propertyService: PropertiesService, private loadinService: LoadingService) {
+  }
+  ngOnInit(): void {
+    this.moroccanCities = cities as []
   }
   toggleModalAddProperty() {
     this.status = !this.status

@@ -48,8 +48,8 @@
                                 <option selected disabled>
                                     Choose a city
                                 </option>
-                                <option>
-                                    feklz
+                                <option *ngFor="let city of moroccanCities">
+                                    {{city.ville}}
                                 </option>
                             </select>
                         </div>
