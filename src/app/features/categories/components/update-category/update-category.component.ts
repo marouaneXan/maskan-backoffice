@@ -34,9 +34,9 @@ export class UpdateCategoryComponent implements OnChanges {
     this.loadingService.show()
     this.categoryService.updateCategory(updatedCatgory.value,categgory_id).subscribe(
       (res: any) => {
+        this.isLoading=false
         this.toastr.success(res.message)
         this.loadingService.hide()
-        this.updatedCatgory.reset()
         this.ModalUpdateCategory = false
         this.onUpdatedCategory.emit()
       },

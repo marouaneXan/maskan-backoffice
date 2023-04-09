@@ -35,6 +35,7 @@ export class UpdateTypeComponent implements OnChanges {
     this.loadingService.show()
     this.typeService.updateType(updatedType.value, type_id).subscribe(
       (res: any) => {
+        this.isLoading=false
         this.toastr.success(res.message)
         this.loadingService.hide()
         this.updatedType.reset()
