@@ -13,6 +13,7 @@ import { DeletePropertyComponent } from './components/delete-property/delete-pro
 import { UpdatePropertyComponent } from './components/update-property/update-property.component';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { DescPipe } from './pipe/desc.pipe';
 
 
 
@@ -24,6 +25,7 @@ import {CloudinaryModule} from '@cloudinary/ng';
     DeletePropertyComponent,
     UpdatePropertyComponent,
     PropertyDetailsComponent,
+    DescPipe,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
