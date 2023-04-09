@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AuthModule } from './features/auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AutorisationInterceptor } from './core/interceptor/autorisation.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AutorisationInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
