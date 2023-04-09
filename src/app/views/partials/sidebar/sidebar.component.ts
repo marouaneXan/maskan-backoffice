@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/core/services/token.service';
 
@@ -7,10 +7,12 @@ import { TokenService } from 'src/app/core/services/token.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   collapseShow = "hidden";
   logoSrc:string='../../../../assets/images/maskan-logo.svg'
+  activeLinkIndex: number = 0; // Initialize activeLinkIndex with 0
   constructor(private tokenService:TokenService,private router:Router){}
+
   sidebarLinks = [
     {
       path: '/admin/dashboard',
@@ -43,14 +45,24 @@ export class SidebarComponent {
       icon:'fa-solid fa-chart-simple'
     },
   ]
-  activeLinkIndex: number = 0;
+
+  ngOnInit() {
+    // Retrieve activeLinkIndex from local storage when component is initialized
+    const activeLinkIndex = localStorage.getItem('activeLinkIndex');
+    if (activeLinkIndex) {
+      this.activeLinkIndex = +activeLinkIndex; // Convert string to number
+    }
+  }
 
   setActiveLink(index: number) {
     this.activeLinkIndex = index;
+    localStorage.setItem('activeLinkIndex', String(index)); // Store activeLinkIndex in local storage
   }
+
   toggleCollapseShow(classes: string) {
     this.collapseShow = classes;
   }
+
   //logout
   logout(){
     this.tokenService.clearLocalStorage()
