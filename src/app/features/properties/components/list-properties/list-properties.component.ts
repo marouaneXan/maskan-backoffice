@@ -3,6 +3,7 @@ import { LoadingService } from 'src/app/core/services/loading.service';
 import { Property } from '../../interface/property';
 import { PropertiesService } from '../../services/properties.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { cities } from 'src/app/data/cities';
 
 @Component({
   selector: 'app-list-properties',
@@ -22,10 +23,12 @@ export class ListPropertiesComponent {
   currentPage: number = 1;
   totalPages: number = 1;
   totalItems: number = 0;
+  moroccanCities : any =[]
 
   constructor(private propertyService: PropertiesService, private loadingService: LoadingService) { }
   ngOnInit(): void {
     this.getAllProperties()
+    this.moroccanCities = cities as []
   }
   togglemodalPropertyVisibility(): void {
     this.modalPropertyVisibility = !this.modalPropertyVisibility
